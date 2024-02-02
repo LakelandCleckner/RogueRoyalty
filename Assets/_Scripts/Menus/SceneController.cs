@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
  * Source File Name: SceneController.cs
  * Author Name: Alexander Maynard
  * Student Number: 301170707
- * Last Modified Date: January 31st, 2024
+ * Creation Date: January 30th, 2024
+ * 
+ * Last Modified by: Alexander Maynard
+ * Last Modified Date: February 1st, 2024
+ * 
  * 
  * Program Description: 
  *      
@@ -14,12 +18,16 @@ using UnityEngine.SceneManagement;
  *      Main Menu, Options and other various Menu Buttons functionality 
  *      throughout the game.
  *   
+ *   
  * Revision History:
  *      -> January 30th, 2024:
- *              -Created this script and fully implemented it.
+ *          -Created this script and fully implemented it.
  *              
  *      -> January 31st, 2024:
- *              -Added comments and program headers for documentation.
+ *          -Added comments and program headers for documentation.
+ *          
+ *      -> February 1st, 2024:
+ *          -Updated program header.
  */
 
 /// <summary>

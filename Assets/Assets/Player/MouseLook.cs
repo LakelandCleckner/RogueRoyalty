@@ -2,16 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /* MouseLook.cs
- * Nicolas Kaplan (301261925) 
+ * Author: Nicolas Kaplan (301261925) 
  * 2024-01-31
+ * 
+ * Last Modified Date: January 31st, 2024
+ * Last Modified by: Alexander Maynard
+ * 
+ * Revision History:
+ *      -> February 1st, 2024:
+ *          -Refactored the cursor lock mode functionality. 
+ *          This included removing it from the Update 
+ *          function, removing the variable (with if else) and 
+ *          putting it in the OnAwake function.
+ * 
+ * 
+ * 
  * Mouse Lookaround script for player movement.
- * V 1.0
+ * V 1.1
  */
 public class MouseLook : MonoBehaviour
 {
     [Header("Cursor Options")]
-    public bool isCursorLocked;
-
     [SerializeField] float sensitivityX = 8f; 
     [SerializeField] float sensitivityY = 0.5f;
     float mouseX, mouseY;
@@ -21,16 +32,16 @@ public class MouseLook : MonoBehaviour
     [SerializeField] float xClamp = 85f; // to prevent the player from looking more than directly up or down
     float xRotation = 0f;
 
+    /// <summary>
+    /// set cursor lock state to Locked on Awake for playability.
+    /// </summary>
+    void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void Update()
     {
-        if (isCursorLocked)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-        }
         transform.Rotate(Vector3.up, mouseX * Time.deltaTime);
 
         // if bool invertedAxis == true (Settings)
