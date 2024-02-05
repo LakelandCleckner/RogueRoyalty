@@ -1,9 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 /* Movement.cs
  * Nicolas Kaplan (301261925) 
  * 2024-01-31
+ * 
+ * Last Modified Date: 2024-02-04
+ * Last Modified by: Alexander Maynard
+ * 
+ * 
+ * Version History:
+ *      -> February 4th, 2024
+ *          - Added temporary call to the GameOver scene in the OnTriggerEnter for Assignment 1 - Part 2 for now; 
+ *          instead of returning the player to the respawn point.
+ * 
+ * 
  * Movement for Player
  * V 1.0
  */
@@ -99,12 +112,15 @@ public class Movement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("DeathZone"))
         {
-            controller.enabled = false;
-            gameObject.transform.position = respawnLocation.position;
-            Debug.Log($"Respawning Player at: {respawnLocation.position}");
-            verticalVelocity = Vector3.zero;
-            controller.enabled = true;
+            //Commented out for now.
 
+            //controller.enabled = false;
+            //gameObject.transform.position = respawnLocation.position;
+            //Debug.Log($"Respawning Player at: {respawnLocation.position}");
+            //verticalVelocity = Vector3.zero;
+            //controller.enabled = true;
+
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
