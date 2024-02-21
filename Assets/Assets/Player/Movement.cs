@@ -7,18 +7,20 @@ using UnityEngine.SceneManagement;
  * Nicolas Kaplan (301261925) 
  * 2024-01-31
  * 
- * Last Modified Date: 2024-02-04
- * Last Modified by: Alexander Maynard
+ * Last Modified Date: 2024-02-21
+ * Last Modified by: Nicolas Kaplan
  * 
  * 
  * Version History:
  *      -> February 4th, 2024
  *          - Added temporary call to the GameOver scene in the OnTriggerEnter for Assignment 1 - Part 2 for now; 
  *          instead of returning the player to the respawn point.
- * 
+ *      -> February 21st, 2024
+ *          - Removed temporary call to GameOver scene, and added public void SendToCheckpoint() to be called from the new
+ *          PlayerHealth.cs script
  * 
  * Movement for Player
- * V 1.0
+ * V 1.2
  */
 public class Movement : MonoBehaviour
 {
@@ -108,19 +110,12 @@ public class Movement : MonoBehaviour
         hover = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void SendToCheckpoint()
     {
-        if (other.gameObject.CompareTag("DeathZone"))
-        {
-            //Commented out for now.
-
-            //controller.enabled = false;
-            //gameObject.transform.position = respawnLocation.position;
-            //Debug.Log($"Respawning Player at: {respawnLocation.position}");
-            //verticalVelocity = Vector3.zero;
-            //controller.enabled = true;
-
-            SceneManager.LoadScene("GameOver");
-        }
+        controller.enabled = false;
+        gameObject.transform.position = respawnLocation.position;
+        Debug.Log($"Respawning Player at: {respawnLocation.position}");
+        verticalVelocity = Vector3.zero;
+        controller.enabled = true;
     }
 }
