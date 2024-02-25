@@ -16,7 +16,7 @@ using UnityEngine.UI;
  *          - Created script PlayerHealth.cs to be in charge of all player health functions. 
  *          It also updates the UI for the hearts on-screen.
  *      -> February 25th, 2024
- *          - Added enemy projectile changes, player can now take damage from objects labelled with a "EnemyProj" tag.
+ *          - Added enemy projectile changes
  * 
  * 
  * Health for Player
@@ -99,10 +99,7 @@ public class PlayerHealth : MonoBehaviour
             // play damage sound effect(s)
             movement.SendToCheckpoint(); // in Movement.cs there's a method called SendToCheckpoint() which is called here to save on time.
         }
-        else if (other.gameObject.CompareTag("EnemyProj"))  // enemy projectiles are marked under EnemyProj tag so enemy projectiles don't affect
-        {                                                   // other enemies
-            LoseHealth(); // if player does not lose health it is because the projectile is destroyed before it can damage them
-        }
+        
         if (other.gameObject.CompareTag("HealthPickup"))
         {
             Destroy(other.gameObject);

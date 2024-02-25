@@ -14,7 +14,7 @@ using UnityEngine.UI;
  * Version History:
  *      -> February 25th, 2024
  *          - Created script EnemyHealth.cs to be in charge of all enemy health functions. 
- *          It also updates the UI for the hearts on-screen.
+ *          
  *          
  * 
  * 

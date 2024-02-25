@@ -3,8 +3,8 @@
  * Author Name: Alexander Maynard
  * Student Number: 301170707
  * Creation Date: February 24th, 2024
- * Last Modified by: Alexander Maynard
- * Last Modified Date: February 24th, 2024
+ * Last Modified by: Nicolas Kaplan
+ * Last Modified Date: February 25th, 2024
  * 
  * 
  * Program Description: This script handles the movement and destruction of the fireball gameobject.
@@ -14,6 +14,8 @@
  * Revision History:
  *      -> February 24th, 2024:
  *          -Added initial functionality for moving towards the player and fireball destruction
+ *      -> February 25th, 2024:
+ *          - Made fireball deal damage to Player
  *          
  */
 using UnityEngine;
@@ -40,6 +42,11 @@ public class FireballMover : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         //.... then destroy the fireball
+        if (other.gameObject.GetComponent<PlayerHealth>() != null)
+        {
+            Debug.Log($"fireball found {other.gameObject.name}");
+            other.gameObject.GetComponent<PlayerHealth>().LoseHealth();
+        }
         Destroy(this.gameObject);
     }
 }
