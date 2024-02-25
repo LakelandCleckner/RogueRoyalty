@@ -135,6 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3210497547568760993}
+  - component: {fileID: 8537148417160623376}
   m_Layer: 0
   m_Name: MagmaMonster
   m_TagString: Untagged
@@ -159,6 +160,20 @@ Transform:
   - {fileID: 7549237839830648018}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8537148417160623376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8292440817447845699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960d4505cb59f88408dcea3b27c1e9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  enemyHealth: 1
 --- !u!1001 &5636657445266143695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -283,6 +298,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100014, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3624839739854981242}
+    - targetCorrespondingSourceObject: {fileID: 100014, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3033863376801752111}
   m_SourcePrefab: {fileID: 100100000, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
 --- !u!4 &5636657445265744705 stripped
 Transform:
@@ -342,6 +360,7 @@ MonoBehaviour:
   _fireBall: {fileID: 2072047665792429952, guid: e5ac1921cd78bc74c9f1f87cebab423a, type: 3}
   _shootPoint: {fileID: 7748371063703531834}
   _timeBetweenFireballs: 1
+  _initalTimeBetweenFireballs: 0
 --- !u!54 &3624839739854981242
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -369,3 +388,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &3033863376801752111
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5636657445266243425}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7987006, y: 0.8858714, z: 0.8726153}
+  m_Center: {x: 0.024540246, y: 0.5062473, z: -0.032947212}
