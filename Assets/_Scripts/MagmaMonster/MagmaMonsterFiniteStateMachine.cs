@@ -15,6 +15,10 @@
  *      -> February 24th, 2024:
  *          -Added all states and functionality
  *          -Added all comments and comment headers
+ *
+ *      -> February 24th, 2024: 
+ *          -Corrected some comments
+ *          -Changed some SerializeFields to not serializable anymore
  */
 
 using System.Collections.Generic;
@@ -45,17 +49,17 @@ public class MagmaMonsterFiniteStateMachine : MonoBehaviour
 
     //reference to the player
     [Header("Player Transform reference")]
-    [SerializeField] private Transform _player;
+    private Transform _player;
 
     //Nav mesh related variables
     [Header("Nav Mesh related variables for AI pathfinding")]
-    [SerializeField] private Vector3 _destination;
-    [SerializeField] private NavMeshAgent _agent;
+    private Vector3 _destination;
+    private NavMeshAgent _agent;
 
 
     //Animator for the MagmaMonster
     [Header("Animator for the Magma Monster")]
-    [SerializeField] private Animator _animator;
+    private Animator _animator;
 
     //fireball to be shot at player
     [Header("Fireball related references")]
@@ -172,7 +176,7 @@ public class MagmaMonsterFiniteStateMachine : MonoBehaviour
     //Functionality-------------------------
 
     /// <summary>
-    /// Fly path uses the AI pathfing package to move the player between points.
+    /// Fly path uses the AI pathfinding package to move the enemy between points.
     /// </summary>
     void FlyPath()
     {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 980339162400133252}
   - component: {fileID: 2450282520381283419}
   - component: {fileID: 110138789287050657}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 6435740740071520757}
   - component: {fileID: 4959655175728807643}
   - component: {fileID: 501375095313521540}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 7365335674663439216}
   - component: {fileID: 4499435821806976504}
   - component: {fileID: 6770198252337259362}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -376,9 +376,9 @@ GameObject:
   - component: {fileID: 3042534742529082513}
   - component: {fileID: 3159884480556318538}
   - component: {fileID: 1874783578105188838}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -463,7 +463,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
