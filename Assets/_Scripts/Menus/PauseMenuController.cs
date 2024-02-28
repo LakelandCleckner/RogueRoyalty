@@ -24,6 +24,8 @@
  *          -Added OnAwake to find the Player's InputManager so it can be disabled when the pause menu is activated.
  *          -Added switching between cursor lock modes.
  *          -Refactored code and comments to better ecapsulate and control the flow of the game pausing/un-pausing.
+ *     -> February 28th, 2024:
+ *          -Fixed pause menu
  */
 
 using UnityEngine;
@@ -44,17 +46,12 @@ public class PauseMenuController : MonoBehaviour
 
 
     //Player input object. This will be used to turn-off player input
-    private InputManager _inputManager;
+    [SerializeField] private InputManager _inputManager;
 
     /// <summary>
     /// Finds the InputManager script on the player 
     /// so it ca be disabled later.
     /// </summary>
-    void Awake()
-    {
-        //find _inputManager script on the player object 
-        _inputManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InputManager>();
-    }
 
     /// <summary>
     /// This just makes sure that the 
@@ -62,6 +59,7 @@ public class PauseMenuController : MonoBehaviour
     /// </summary>
     void Start()
     {
+        //make sure the pause menu is off at the start
         _pauseMenu.SetActive(false);
     }
 

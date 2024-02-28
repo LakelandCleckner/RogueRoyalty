@@ -8,7 +8,7 @@ TagManager:
   - HealthPickup
   - EnemyProj
   - Projectile
-  - Enemy
+  - LoadButton
   layers:
   - Default
   - TransparentFX

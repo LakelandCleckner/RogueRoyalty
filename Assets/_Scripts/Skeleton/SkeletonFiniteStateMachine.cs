@@ -43,8 +43,6 @@ public class SkeletonFiniteStateMachine : MonoBehaviour
     [SerializeField] private float _patrolSpeed = 5.0f;
     [SerializeField] private float _chaseSpeed = 10.0f;
 
-
-
     //patrol path navigation points for the enemy
     [Header("Skeleton Patrol Points")]
     [SerializeField] private int _currentPosition = 0;
