@@ -74,8 +74,6 @@ public class EnemyHealth : MonoBehaviour
             Destroy(other.gameObject);
             GainHealth();
             // play healing sound effect(s)
-            
-
         }
     }
 }
