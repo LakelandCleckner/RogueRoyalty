@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-/* Movement.cs
+/* PlayerHealth.cs
  * Nicolas Kaplan (301261925) 
- * 2024-02-21
+ * 2024-02-25
  * 
- * Last Modified Date: 2024-02-21
+ * Last Modified Date: 2024-02-25
  * Last Modified by: Nicolas Kaplan
  * 
  * 
@@ -15,11 +15,12 @@ using UnityEngine.UI;
  *      -> February 21st, 2024
  *          - Created script PlayerHealth.cs to be in charge of all player health functions. 
  *          It also updates the UI for the hearts on-screen.
- *          
+ *      -> February 25th, 2024
+ *          - Added enemy projectile changes
  * 
  * 
- * Movement for Player
- * V 1.0
+ * Health for Player
+ * V 1.1
  */
 public class PlayerHealth : MonoBehaviour
 {
@@ -98,13 +99,12 @@ public class PlayerHealth : MonoBehaviour
             // play damage sound effect(s)
             movement.SendToCheckpoint(); // in Movement.cs there's a method called SendToCheckpoint() which is called here to save on time.
         }
+        
         if (other.gameObject.CompareTag("HealthPickup"))
         {
             Destroy(other.gameObject);
             GainHealth();
             // play healing sound effect(s)
-            
-
         }
     }
 }
