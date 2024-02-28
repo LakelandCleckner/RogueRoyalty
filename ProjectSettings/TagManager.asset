@@ -8,6 +8,7 @@ TagManager:
   - HealthPickup
   - EnemyProj
   - Projectile
+  - Enemy
   layers:
   - Default
   - TransparentFX

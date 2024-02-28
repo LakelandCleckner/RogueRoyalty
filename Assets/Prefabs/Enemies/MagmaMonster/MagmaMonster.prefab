@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6868645414585736526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_2
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7549237839830648018}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PatrolPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6733138835432884464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point_1
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -135,10 +135,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3210497547568760993}
-  - component: {fileID: 8537148417160623376}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MagmaMonster
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,20 +159,6 @@ Transform:
   - {fileID: 7549237839830648018}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8537148417160623376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8292440817447845699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 960d4505cb59f88408dcea3b27c1e9cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1
-  enemyHealth: 1
 --- !u!1001 &5636657445266143695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -182,6 +167,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3210497547568760993}
     m_Modifications:
+    - target: {fileID: 100000, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 100014, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
       propertyPath: m_Name
       value: StoneMonster
@@ -189,6 +202,18 @@ PrefabInstance:
     - target: {fileID: 100014, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -301,6 +326,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100014, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3033863376801752111}
+    - targetCorrespondingSourceObject: {fileID: 100014, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 673971053540624038}
+    - targetCorrespondingSourceObject: {fileID: 100014, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4752349746436943209}
   m_SourcePrefab: {fileID: 100100000, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
 --- !u!4 &5636657445265744705 stripped
 Transform:
@@ -353,10 +384,6 @@ MonoBehaviour:
   _patrolPositions:
   - {fileID: 6733138835432884464}
   - {fileID: 6868645414585736526}
-  _player: {fileID: 0}
-  _destination: {x: 0, y: 0, z: 0}
-  _agent: {fileID: 0}
-  _animator: {fileID: 0}
   _fireBall: {fileID: 2072047665792429952, guid: e5ac1921cd78bc74c9f1f87cebab423a, type: 3}
   _shootPoint: {fileID: 7748371063703531834}
   _timeBetweenFireballs: 1
@@ -409,3 +436,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7987006, y: 0.8858714, z: 0.8726153}
   m_Center: {x: 0.024540246, y: 0.5062473, z: -0.032947212}
+--- !u!135 &673971053540624038
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5636657445266243425}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &4752349746436943209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5636657445266243425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 960d4505cb59f88408dcea3b27c1e9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 1
+  enemyHealth: 1

@@ -5,7 +5,8 @@ using UnityEngine;
  * Nicolas Kaplan (301261925) 
  * 2024-01-31
  * InputManager in charge of player movement, jumping.
- * V 1.0
+ * added functionality to manage inputs with shooting mechanic in mouselook.
+ * V 1.1
  */
 
 public class InputManager : MonoBehaviour
@@ -27,7 +28,7 @@ public class InputManager : MonoBehaviour
         groundMovement.Jump.performed += _ => movement.OnJumpPressed();
         groundMovement.MouseX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
         groundMovement.MouseY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
-        
+        groundMovement.Fire.performed += _ => mouseLook.OnFirePressed();
     }
     private void Update()
     {

@@ -7,24 +7,25 @@ using UnityEngine.UI;
  * Nicolas Kaplan (301261925) 
  * 2024-02-25
  * 
- * Last Modified Date: 2024-02-25
+ * Last Modified Date: 2024-02-28
  * Last Modified by: Nicolas Kaplan
  * 
  * 
  * Version History:
  *      -> February 25th, 2024
  *          - Created script EnemyHealth.cs to be in charge of all enemy health functions. 
- *          
+*       -> February 28th, 2024
+ *          - Made int enemyHealth public so that it can be accessed from MouseLook.cs. 
  *          
  * 
  * 
  * Health for Enemy
- * V 1.0
+ * V 1.1
  */
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int maxHealth = 3;
-    [SerializeField] int enemyHealth;
+    [SerializeField] public int enemyHealth;
 
 
     private void Start()
