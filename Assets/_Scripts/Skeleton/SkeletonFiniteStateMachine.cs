@@ -13,6 +13,8 @@
  *      -> February 25th, 2024:
  *          -Added all states and functionality for the Skeleton FSM
  *          -Added all comments and comment headers
+ *      -> February 26th, 2024:
+ *          -Tweeked some header naming
  */
 
 using System.Collections.Generic;
@@ -37,7 +39,7 @@ public class SkeletonFiniteStateMachine : MonoBehaviour
     [SerializeField] private float _awarenessRadius = 20.0f;
 
     //speed variables (in the nav mesh agant component)
-    [Header("Skeleton Awareness Variable")]
+    [Header("Skeleton Speed Variables")]
     [SerializeField] private float _patrolSpeed = 5.0f;
     [SerializeField] private float _chaseSpeed = 10.0f;
 
