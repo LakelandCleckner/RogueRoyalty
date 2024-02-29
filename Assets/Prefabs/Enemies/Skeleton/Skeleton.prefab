@@ -382,7 +382,7 @@ MonoBehaviour:
   _currentSkeletonState: 0
   _awarenessRadius: 4
   _patrolSpeed: 5
-  _chaseSpeed: 10
+  _chaseSpeed: 7
   _currentPosition: 0
   _patrolPositions:
   - {fileID: 6203020701676749165}

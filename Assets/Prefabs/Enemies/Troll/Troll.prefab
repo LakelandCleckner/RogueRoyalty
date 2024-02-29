@@ -964,6 +964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7057872708529482136}
   - component: {fileID: 1906918474884137352}
+  - component: {fileID: 8962353567138037551}
   m_Layer: 10
   m_Name: AxeCollider
   m_TagString: Untagged
@@ -1007,6 +1008,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.841369, y: 136.02206, z: 81.035225}
   m_Center: {x: -1.9206799, y: 47.061775, z: 39.999786}
+--- !u!114 &8962353567138037551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6199248224565773461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c8246b57a049e468be0c0b06e13ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6562786492080393461
 GameObject:
   m_ObjectHideFlags: 0

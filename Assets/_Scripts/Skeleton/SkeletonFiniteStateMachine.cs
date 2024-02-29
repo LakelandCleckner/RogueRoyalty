@@ -4,7 +4,7 @@
  * Student Number: 301170707
  * Creation Date: February 25th, 2024
  * Last Modified by: Alexander Maynard
- * Last Modified Date: February 25th, 2024
+ * Last Modified Date: February 28th, 2024
  * 
  * 
  * Program Description: This script handles the behaviours of the Skeleton enemy type. Such states include: Patrol, Chase and 'Explode'.
@@ -15,6 +15,8 @@
  *          -Added all comments and comment headers
  *      -> February 26th, 2024:
  *          -Tweeked some header naming
+ *      ->February 28th, 2024:
+ *          -Added functionality for decrementing player health.
  */
 
 using System.Collections.Generic;
@@ -292,12 +294,19 @@ public class SkeletonFiniteStateMachine : MonoBehaviour
     }
 
 
-    //checks if the skeleton hit the player, to tell the skeleton FSM that the skeleton can explode
+    //checks if the skeleton hit the player, to tell the skeleton FSM that the skeleton can explode and decrement the player health
     private void OnTriggerEnter(Collider other)
     {
         //if we hit the player collider... 
         if(other.gameObject.CompareTag("Player"))
         {
+            //check if havent exploded yet
+            if(_canExplode == false)
+            {
+                //decrement the player health
+                other.gameObject.GetComponent<PlayerHealth>().LoseHealth();
+            }
+            Destroy(this.gameObject);
             //...then set canExplode to true to let the skeleton FSM know that the skeleton can explodes
             _canExplode = true;
         }
