@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /* Movement.cs
  * Nicolas Kaplan (301261925) 
  * 2024-01-31
  * 
- * Last Modified Date: 2024-03-15
- * Last Modified by: Alexander Maynard
+ * Last Modified Date: 2024-03-16
+ * Last Modified by: Nicolas Kaplan
  * 
  * 
  * Version History:
@@ -20,9 +21,10 @@ using UnityEngine.SceneManagement;
  *          PlayerHealth.cs script
  *      -> March 15th, 2024 (by Alexander Maynard)
  *          - Commented out the Debug.Log() lines
- * 
+ *      -> March 16th, 2024 (Nick Kaplan)
+ *          - Created mobile functionality for movement and jumping.
  * Movement for Player
- * V 1.2
+ * V 1.3
  */
 public class Movement : MonoBehaviour
 {
@@ -31,12 +33,14 @@ public class Movement : MonoBehaviour
 
     [Header("Character Controller")]
     [SerializeField] CharacterController controller;
-   
+
     [Header("Movement")]
+    [SerializeField] Joystick movementJoystick;
     [SerializeField] float speed = 11f;
     Vector2 horizontalInput;
 
     [Header("Jumping")]
+    [SerializeField] Button jumpButton;
     [SerializeField] float jumpHeight = 3.5f;
     public bool jump;
 
@@ -57,10 +61,12 @@ public class Movement : MonoBehaviour
     }
     private void Update()
     {
+        controller.Move(new Vector3 (movementJoystick.Direction.x * speed * Time.deltaTime, 0, movementJoystick.Direction.y * speed * Time.deltaTime));
         float halfHeight = controller.height * 0.5f;
         Vector3 bottomPoint = transform.TransformPoint(controller.center - Vector3.up * halfHeight);
         isGrounded = Physics.CheckSphere(bottomPoint, 0.1f, groundMask);
 
+        jumpButton.onClick.AddListener(OnJumpPressed);
         if (isGrounded)
         {
             //Debug.Log("resetting velocity");
