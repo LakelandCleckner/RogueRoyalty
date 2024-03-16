@@ -1,20 +1,22 @@
 using UnityEngine;
+using UnityEngine.UI;
 /* InputManager.cs
- * Nicolas Kaplan (301261925) 
- * 2024-01-31
- * 
- * Last Modified by: Alexander Maynard
- * Last Modified Date: 2024-03-15
- *
- * InputManager in charge of player movement, jumping.
- * added functionality to manage inputs with shooting mechanic in mouselook.
- * 
- *  Version History:
- *      -> March 15th, 2024 (by Alexander Maynard):
- *          - added a delay between shots for the player shooting.
- * 
- * V 1.1
- */
+* Nicolas Kaplan (301261925) 
+* 2024-01-31
+* 
+* Last Modified by: Alexander Maynard
+* Last Modified Date: 2024-03-15
+*
+* InputManager in charge of player movement, jumping.
+* added functionality to manage inputs with shooting mechanic in mouselook.
+* 
+*  Version History:
+*      -> March 15th, 2024 (by Alexander Maynard):
+*          - added a delay between shots for the player shooting.
+*          - added functionality for mobile touch button for shooting with the UI button.
+* 
+* V 1.1
+*/
 
 public class InputManager : MonoBehaviour
 {
@@ -28,15 +30,19 @@ public class InputManager : MonoBehaviour
     [SerializeField] private float _totalTimeBetweenShots = 1.0f;
     [SerializeField] private float _timeBetweenShots;
 
+    [Header("Mobile Touch Buttons")]
+    [SerializeField] private Button _shootBtn;
+
+
     Vector2 horizontalInput;
     Vector2 mouseInput;
     private void Awake()
     {
+        //to control how much time between each time the player shoots
         _timeBetweenShots = _totalTimeBetweenShots;
 
         controls = new PlayerActions();
         groundMovement = controls.GroundMovement;
-
         groundMovement.HorizontalMovement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
         groundMovement.Jump.performed += _ => movement.OnJumpPressed();
         groundMovement.MouseX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
@@ -48,8 +54,17 @@ public class InputManager : MonoBehaviour
                 mouseLook.OnFirePressed();
                 _timeBetweenShots = _totalTimeBetweenShots;
             }
-            
         };
+
+        //mobile touch button for shooting
+        _shootBtn.onClick.AddListener(() =>
+        {
+            if(_timeBetweenShots < 0)
+            {
+                mouseLook.OnFirePressed();
+                _timeBetweenShots = _totalTimeBetweenShots;
+            }
+        });
     }
     private void Update()
     {

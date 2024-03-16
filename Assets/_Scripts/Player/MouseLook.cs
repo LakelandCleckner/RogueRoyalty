@@ -1,30 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 /* MouseLook.cs
- * Author: Nicolas Kaplan (301261925) 
- * 2024-01-31
- * 
- * Last Modified Date: March 15th, 2024
- * Last Modified by: Alexander Maynard
- * 
- * Revision History:
- *      -> February 1st, 2024:
- *          -Refactored the cursor lock mode functionality. 
- *          This included removing it from the Update 
- *          function, removing the variable (with if else) and 
- *          putting it in the OnAwake function.
- *      -> February 28th, 2024:
- *          - Added shooting functionality using raycasts.
- *      -> March 15th, 2024 (by Alexander Maynard):
- *          - Refactored and completed raycast shooting using layers (bitwise shift) and to include a UI crosshair as the shooting point.
- *          - Added comments for any work done on player shooting.
- *          - Added functionality for muzzle flash to be triggered when shooting.
- * 
- * 
- * Mouse Lookaround script for player movement.
- * V 1.2
- */
+* Author: Nicolas Kaplan (301261925) 
+* 2024-01-31
+* 
+* Last Modified Date: March 15th, 2024
+* Last Modified by: Alexander Maynard
+* 
+* Revision History:
+*      -> February 1st, 2024:
+*          -Refactored the cursor lock mode functionality. 
+*          This included removing it from the Update 
+*          function, removing the variable (with if else) and 
+*          putting it in the OnAwake function.
+*      -> February 28th, 2024:
+*          - Added shooting functionality using raycasts.
+*      -> March 15th, 2024 (by Alexander Maynard):
+*          - Refactored and completed raycast shooting using layers (bitwise shift) and to include a UI crosshair as the shooting point.
+*          - Added comments for any work done on player shooting.
+*          - Added functionality for muzzle flash to be triggered when shooting.
+* 
+* 
+* Mouse Lookaround script for player movement.
+* V 1.2
+*/
 public class MouseLook : MonoBehaviour
 {
     [Header("Cursor Options")]
@@ -42,7 +43,6 @@ public class MouseLook : MonoBehaviour
     [Header("Particles for player shooting")]
     [SerializeField] private ParticleSystem _muzzleFlashParticles;
     [SerializeField] private ParticleSystem _bloodParticles;
-
 
     [SerializeField] float xClamp = 85f; // to prevent the player from looking more than directly up or down
     float xRotation = 0f;
