@@ -14,6 +14,7 @@ using UnityEngine.UI;
 *      -> March 15th, 2024 (by Alexander Maynard):
 *          - added a delay between shots for the player shooting.
 *          - added functionality for mobile touch button for shooting with the UI button.
+*          - added initial aiming joystick controls.
 * 
 * V 1.1
 */
@@ -32,7 +33,7 @@ public class InputManager : MonoBehaviour
 
     [Header("Mobile Touch Buttons")]
     [SerializeField] private Button _shootBtn;
-
+    [SerializeField] private Joystick _aimingJoystick;
 
     Vector2 horizontalInput;
     Vector2 mouseInput;
@@ -68,6 +69,9 @@ public class InputManager : MonoBehaviour
     }
     private void Update()
     {
+        mouseInput.x = _aimingJoystick.Direction.x;
+        mouseInput.y = _aimingJoystick.Direction.y;
+
         movement.RecieveInput(horizontalInput);
         mouseLook.RecieveInput(mouseInput);
         // Hovering Check (player needs to press and hold the jump key, be in mid-air, and be going downwards)

@@ -26,6 +26,9 @@
  *          -Refactored code and comments to better ecapsulate and control the flow of the game pausing/un-pausing.
  *     -> February 28th, 2024:
  *          -Fixed pause menu
+ *     -> March 15th, 2024 (by Alexander Maynard):
+ *          -made the CanPauseGame method public so the mobile pause button can access it.
+ *          -Started refactoring for the CanPauseMenu method to include the touch controls.
  */
 
 using UnityEngine;
@@ -47,6 +50,9 @@ public class PauseMenuController : MonoBehaviour
 
     //Player input object. This will be used to turn-off player input
     [SerializeField] private InputManager _inputManager;
+
+    [Header("Reference to the aiming joystick")]
+    [SerializeField] private Joystick _aimingJoystick;
 
     /// <summary>
     /// Finds the InputManager script on the player 
@@ -82,7 +88,7 @@ public class PauseMenuController : MonoBehaviour
     /// Resumes or pauses the game bases on the  bool passed to this function.
     /// </summary>
     /// <param name="isPaused">True means game is pause, false means game is resumed.</param>
-    void CanPauseGame(bool isPaused)
+    public void CanPauseGame(bool isPaused)
     {
         //checks if the game is paused
         switch (isPaused)
@@ -94,8 +100,9 @@ public class PauseMenuController : MonoBehaviour
             case true:
                 Time.timeScale = 0.0f;
                 _pauseMenu.SetActive(true);
-                _inputManager.enabled = false;
-                Cursor.lockState = CursorLockMode.None;
+                _aimingJoystick.gameObject.SetActive(false);
+                //_inputManager.enabled = false;
+                //Cursor.lockState = CursorLockMode.None;
                 break;
             //false so...
             //...set timeScale to 1 to resume the game,
@@ -104,8 +111,9 @@ public class PauseMenuController : MonoBehaviour
             case false:
                 Time.timeScale = 1.0f;
                 _pauseMenu.SetActive(false);
-                _inputManager.enabled = true;
-                Cursor.lockState = CursorLockMode.Locked;
+                _aimingJoystick.gameObject.SetActive(true);
+                //_inputManager.enabled = true;
+                //Cursor.lockState = CursorLockMode.Locked;
                 break;
         }
     }

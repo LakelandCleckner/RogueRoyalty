@@ -21,6 +21,7 @@ using UnityEngine.UI;
 *          - Refactored and completed raycast shooting using layers (bitwise shift) and to include a UI crosshair as the shooting point.
 *          - Added comments for any work done on player shooting.
 *          - Added functionality for muzzle flash to be triggered when shooting.
+*          - Disabled cursor lock state
 * 
 * 
 * Mouse Lookaround script for player movement.
@@ -59,7 +60,7 @@ public class MouseLook : MonoBehaviour
     {
         //so no particles are spawned when the game first starts.
         _muzzleFlashParticles.Pause();
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
