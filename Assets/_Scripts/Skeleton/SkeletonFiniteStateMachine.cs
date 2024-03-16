@@ -15,8 +15,10 @@
  *          -Added all comments and comment headers
  *      -> February 26th, 2024:
  *          -Tweeked some header naming
- *      ->February 28th, 2024:
+ *      -> February 28th, 2024:
  *          -Added functionality for decrementing player health.
+ *      -> March 15th, 2024:
+ *          -Removed Destroy in skeleton explosion method
  */
 
 using System.Collections.Generic;
@@ -306,7 +308,6 @@ public class SkeletonFiniteStateMachine : MonoBehaviour
                 //decrement the player health
                 other.gameObject.GetComponent<PlayerHealth>().LoseHealth();
             }
-            Destroy(this.gameObject);
             //...then set canExplode to true to let the skeleton FSM know that the skeleton can explodes
             _canExplode = true;
         }

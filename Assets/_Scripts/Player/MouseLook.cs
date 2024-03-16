@@ -39,8 +39,9 @@ public class MouseLook : MonoBehaviour
     [SerializeField] private Camera _playerCam;
     [SerializeField] private Transform _crosshairTransform;
 
-    [Header("Muzzle flash for player shooting")]
+    [Header("Particles for player shooting")]
     [SerializeField] private ParticleSystem _muzzleFlashParticles;
+    [SerializeField] private ParticleSystem _bloodParticles;
 
 
     [SerializeField] float xClamp = 85f; // to prevent the player from looking more than directly up or down
@@ -129,6 +130,8 @@ public class MouseLook : MonoBehaviour
             {
                 //...then call the LoseHealth method on that shootPoint
                 shootPoint.transform.gameObject.GetComponent<EnemyHealth>().LoseHealth();
+                Instantiate(_bloodParticles, shootPoint.point, Quaternion.identity);
+
                 //sends message to the console
                 Debug.Log($"Enemy health: {shootPoint.transform.gameObject.GetComponent<EnemyHealth>().enemyHealth}");
             }
