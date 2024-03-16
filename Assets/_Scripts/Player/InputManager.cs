@@ -1,11 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 /* InputManager.cs
  * Nicolas Kaplan (301261925) 
  * 2024-01-31
+ * 
+ * Last Modified by: Alexander Maynard
+ * Last Modified Date: 2024-03-15
+ *
  * InputManager in charge of player movement, jumping.
  * added functionality to manage inputs with shooting mechanic in mouselook.
+ * 
+ *  Version History:
+ *      -> March 15th, 2024 (by Alexander Maynard):
+ *          - added a delay between shots for the player shooting.
+ * 
  * V 1.1
  */
 
@@ -17,10 +24,16 @@ public class InputManager : MonoBehaviour
     PlayerActions controls;
     PlayerActions.GroundMovementActions groundMovement;
 
+    [Header("Time between shots variables")]
+    [SerializeField] private float _totalTimeBetweenShots = 1.0f;
+    [SerializeField] private float _timeBetweenShots;
+
     Vector2 horizontalInput;
     Vector2 mouseInput;
     private void Awake()
     {
+        _timeBetweenShots = _totalTimeBetweenShots;
+
         controls = new PlayerActions();
         groundMovement = controls.GroundMovement;
 
@@ -28,7 +41,15 @@ public class InputManager : MonoBehaviour
         groundMovement.Jump.performed += _ => movement.OnJumpPressed();
         groundMovement.MouseX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
         groundMovement.MouseY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
-        groundMovement.Fire.performed += _ => mouseLook.OnFirePressed();
+        groundMovement.Fire.performed += _ =>
+        {
+            if(_timeBetweenShots < 0)
+            {
+                mouseLook.OnFirePressed();
+                _timeBetweenShots = _totalTimeBetweenShots;
+            }
+            
+        };
     }
     private void Update()
     {
@@ -43,6 +64,9 @@ public class InputManager : MonoBehaviour
         {
             movement.NotHovering();
         }
+
+        //decrement the shot time.
+        _timeBetweenShots -= 1 * Time.deltaTime;
     }
     private void OnEnable()
     {

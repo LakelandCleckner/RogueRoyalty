@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
  * Nicolas Kaplan (301261925) 
  * 2024-01-31
  * 
- * Last Modified Date: 2024-02-21
- * Last Modified by: Nicolas Kaplan
+ * Last Modified Date: 2024-03-15
+ * Last Modified by: Alexander Maynard
  * 
  * 
  * Version History:
@@ -18,6 +18,8 @@ using UnityEngine.SceneManagement;
  *      -> February 21st, 2024
  *          - Removed temporary call to GameOver scene, and added public void SendToCheckpoint() to be called from the new
  *          PlayerHealth.cs script
+ *      -> March 15th, 2024 (by Alexander Maynard)
+ *          - Commented out the Debug.Log() lines
  * 
  * Movement for Player
  * V 1.2
@@ -51,7 +53,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         originalGravity = gravity;
-        Debug.Log($"Initial Original Gravity: {originalGravity}");
+        //Debug.Log($"Initial Original Gravity: {originalGravity}");
     }
     private void Update()
     {
@@ -61,7 +63,7 @@ public class Movement : MonoBehaviour
 
         if (isGrounded)
         {
-            Debug.Log("resetting velocity");
+            //Debug.Log("resetting velocity");
             verticalVelocity.y = 0;
         }
         Vector3 horizontalVelocity = (transform.right * horizontalInput.x + transform.forward * horizontalInput.y) * speed;
@@ -79,14 +81,14 @@ public class Movement : MonoBehaviour
         {
             verticalVelocity.y = -1;
             gravity = gravity / hoverDivider;
-            Debug.Log($"Hovering... Gravity: {gravity}");
+            //Debug.Log($"Hovering... Gravity: {gravity}");
         }
         else
         {
             if (!isGrounded && !jump)
             {
                 gravity = originalGravity;
-                Debug.Log("Gravity Normal. Gravity: {gravity}. No longer hovering");
+                //Debug.Log("Gravity Normal. Gravity: {gravity}. No longer hovering");
             }
         }
         verticalVelocity.y += gravity * Time.deltaTime;
@@ -114,7 +116,7 @@ public class Movement : MonoBehaviour
     {
         controller.enabled = false;
         gameObject.transform.position = respawnLocation.position;
-        Debug.Log($"Respawning Player at: {respawnLocation.position}");
+        //Debug.Log($"Respawning Player at: {respawnLocation.position}");
         verticalVelocity = Vector3.zero;
         controller.enabled = true;
     }

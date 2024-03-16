@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+
 /* EnemyHealth.cs
  * Nicolas Kaplan (301261925) 
  * 2024-02-25
  * 
- * Last Modified Date: 2024-02-28
- * Last Modified by: Nicolas Kaplan
+ * Last Modified Date: 2024-03-15
+ * Last Modified by: Alexander Maynard
  * 
  * 
  * Version History:
@@ -16,6 +13,8 @@ using UnityEngine.UI;
  *          - Created script EnemyHealth.cs to be in charge of all enemy health functions. 
 *       -> February 28th, 2024
  *          - Made int enemyHealth public so that it can be accessed from MouseLook.cs. 
+ *      -> March 15th, 2024 (by Alexander Maynard):
+ *          - Refactored code to make the Raycast decrement health.
  *          
  * 
  * 
@@ -26,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int maxHealth = 3;
     [SerializeField] public int enemyHealth;
+    [SerializeField] private GameObject _thingToDestroy;
 
 
     private void Start()
@@ -34,18 +34,17 @@ public class EnemyHealth : MonoBehaviour
         gameObject.GetComponent<Movement>();
     }
 
+    private void Update()
+    {
+        if(enemyHealth <= 0)
+        {
+            Destroy(_thingToDestroy);
+        }
+    }
+
     public void LoseHealth()
     {
-        if (enemyHealth > 1)
-        {
-            enemyHealth--;
-            Debug.Log($"{gameObject.name} lost health.");
-
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        enemyHealth--;
     }
     public void GainHealth()
     {

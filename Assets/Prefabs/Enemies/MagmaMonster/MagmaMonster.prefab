@@ -469,5 +469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 960d4505cb59f88408dcea3b27c1e9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  enemyHealth: 1
+  maxHealth: 3
+  enemyHealth: 3
+  _thingToDestroy: {fileID: 8292440817447845699}

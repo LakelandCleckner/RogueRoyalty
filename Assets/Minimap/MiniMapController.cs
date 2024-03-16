@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MiniMapController : MonoBehaviour
 {
     public GameObject player;
-    public GameObject camera;
+    public Camera camera;
     public Transform cameraTransform;
     public GameObject playerMarker;
 
