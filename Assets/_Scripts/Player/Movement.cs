@@ -126,4 +126,17 @@ public class Movement : MonoBehaviour
         verticalVelocity = Vector3.zero;
         controller.enabled = true;
     }
+
+    public void SetRespawnLocation(Vector3 newPosition)
+    {
+        if (respawnLocation != null)
+        {
+            respawnLocation.position = newPosition;
+        }
+        else
+        {
+            Debug.LogError("Respawn location transform is not set.");
+        }
+    }
+
 }

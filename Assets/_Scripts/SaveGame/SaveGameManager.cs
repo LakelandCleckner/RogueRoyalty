@@ -155,8 +155,9 @@ public class SaveGameManager : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
+            Debug.Log($"Setting player position to: {loadedPlayerPosition}");
             player.transform.position = loadedPlayerPosition;
-            Debug.Log($"Game loaded with position: {player.transform.position}");
+            Debug.Log($"Player position after setting: {player.transform.position}");
         }
         else
         {

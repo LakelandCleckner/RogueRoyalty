@@ -19,12 +19,21 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+    // Inside your checkpoint collision method
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            // Update the respawnLocation to the current checkpoint's position
+            Movement playerMovement = other.GetComponent<Movement>();
+            if (playerMovement != null)
+            {
+                playerMovement.SetRespawnLocation(transform.position);
+            }
+
             SaveGameManager.Instance.SaveGame(other.transform);
             Debug.Log("Checkpoint reached and game saved.");
         }
     }
+
 }
