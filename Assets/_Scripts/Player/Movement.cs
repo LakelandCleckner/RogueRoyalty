@@ -23,6 +23,8 @@ using UnityEngine.UI;
  *          - Commented out the Debug.Log() lines
  *      -> March 16th, 2024 (Nick Kaplan)
  *          - Created mobile functionality for movement and jumping.
+ *      -> March 17th, 2024 (Lakeland Cleckner)
+ *          - Added SetRespawnLocation for checkpoint functionality
  * Movement for Player
  * V 1.3
  */
@@ -135,7 +137,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Respawn location transform is not set.");
+            //Debug.LogError("Respawn location transform is not set.");
         }
     }
 

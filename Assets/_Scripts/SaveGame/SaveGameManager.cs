@@ -14,9 +14,9 @@ using UnityEngine.UI;
  * 
  * 
  * Version History:
- *      -> February 25th, 2024
+ *      -> February 25th, 2024 (Lakeland Cleckner)
  *          - Created script to handle saving and loading functions. 
- *      -> February 27th, 2024   
+ *      -> February 27th, 2024 (Lakeland Cleckner)   
  *          -Fixed LoadButton losing reference to method
  *          
  * 
@@ -49,12 +49,12 @@ public class SaveGameManager : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
-            Debug.Log("An instance of SaveGameManager already exists. Destroying duplicate.");
+            //Debug.Log("An instance of SaveGameManager already exists. Destroying duplicate.");
             Destroy(gameObject);
         }
         else
         {
-            Debug.Log("SaveGameManager instance assigned.");
+            //Debug.Log("SaveGameManager instance assigned.");
             _instance = this;
             DontDestroyOnLoad(gameObject);
         }
@@ -64,14 +64,14 @@ public class SaveGameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneLoaded += AssignLoadButtonListener;
-        Debug.Log("SaveGameManager enabled and listening for sceneLoaded.");
+        //Debug.Log("SaveGameManager enabled and listening for sceneLoaded.");
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
         SceneManager.sceneLoaded -= AssignLoadButtonListener;
-        Debug.Log("SaveGameManager disabled and no longer listening for sceneLoaded.");
+        //Debug.Log("SaveGameManager disabled and no longer listening for sceneLoaded.");
     }
 
     private void AssignLoadButtonListener(Scene scene, LoadSceneMode mode)
@@ -84,7 +84,7 @@ public class SaveGameManager : MonoBehaviour
             {
                 btn.onClick.RemoveAllListeners();
                 btn.onClick.AddListener(RequestLoadGame);
-                Debug.Log("Load button listener assigned.");
+                //Debug.Log("Load button listener assigned.");
             }
         }
     }
@@ -102,11 +102,11 @@ public class SaveGameManager : MonoBehaviour
             string filePath = Application.persistentDataPath + "/playerInfo.json";
             File.WriteAllText(filePath, json);
 
-            Debug.Log($"Game saved with position: {data.position} and scene: {data.sceneName}");
+            //Debug.Log($"Game saved with position: {data.position} and scene: {data.sceneName}");
         }
         catch (Exception ex)
         {
-            Debug.LogError("Failed to save game: " + ex.ToString());
+            //Debug.LogError("Failed to save game: " + ex.ToString());
         }
     }
 
@@ -117,7 +117,7 @@ public class SaveGameManager : MonoBehaviour
         {
             try
             {
-                Debug.Log("Save file found, preparing to load game.");
+                //Debug.Log("Save file found, preparing to load game.");
                 string json = File.ReadAllText(path);
                 PlayerData data = JsonUtility.FromJson<PlayerData>(json);
 
@@ -127,41 +127,41 @@ public class SaveGameManager : MonoBehaviour
                     loadedSceneName = data.sceneName;
                     isLoadRequested = true;
 
-                    Debug.Log($"Requested load game with position: {loadedPlayerPosition} and scene: {loadedSceneName}");
+                    //Debug.Log($"Requested load game with position: {loadedPlayerPosition} and scene: {loadedSceneName}");
                     SceneManager.LoadSceneAsync(loadedSceneName); // Load the saved scene.
                 }
                 else
                 {
-                    Debug.LogError("Save data is corrupt or invalid.");
+                    //Debug.LogError("Save data is corrupt or invalid.");
                 }
             }
             catch (Exception ex)
             {
-                Debug.LogError("Failed to load game: " + ex.ToString());
+                //Debug.LogError("Failed to load game: " + ex.ToString());
             }
         }
         else
         {
-            Debug.LogError("Save file not found in path: " + path);
+            //Debug.LogError("Save file not found in path: " + path);
         }
     }
 
     private IEnumerator ApplyLoadedPositionWithDelay()
     {
-        Debug.Log("Applying loaded position after delay.");
+        //Debug.Log("Applying loaded position after delay.");
         // Wait for the end of frame to ensure all GameObjects are fully loaded
         yield return new WaitForEndOfFrame();
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            Debug.Log($"Setting player position to: {loadedPlayerPosition}");
+            //Debug.Log($"Setting player position to: {loadedPlayerPosition}");
             player.transform.position = loadedPlayerPosition;
-            Debug.Log($"Player position after setting: {player.transform.position}");
+            //Debug.Log($"Player position after setting: {player.transform.position}");
         }
         else
         {
-            Debug.LogError("Player object not found in the scene.");
+            //Debug.LogError("Player object not found in the scene.");
         }
 
         isLoadRequested = false;
@@ -169,22 +169,22 @@ public class SaveGameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log($"Scene loaded: {scene.name}, Load Mode: {mode}");
+        //Debug.Log($"Scene loaded: {scene.name}, Load Mode: {mode}");
         if (isLoadRequested)
         {
             if (scene.name == loadedSceneName)
             {
-                Debug.Log("Load request is true and scene name matches. Starting ApplyLoadedPositionWithDelay coroutine.");
+                //Debug.Log("Load request is true and scene name matches. Starting ApplyLoadedPositionWithDelay coroutine.");
                 StartCoroutine(ApplyLoadedPositionWithDelay());
             }
             else
             {
-                Debug.LogError($"Mismatch in scene names. Expected: {loadedSceneName}, but loaded: {scene.name}");
+               //Debug.LogError($"Mismatch in scene names. Expected: {loadedSceneName}, but loaded: {scene.name}");
             }
         }
         else
         {
-            Debug.Log("Scene loaded, but no load was requested. Not applying loaded position.");
+            //Debug.Log("Scene loaded, but no load was requested. Not applying loaded position.");
         }
     }
 

@@ -8,9 +8,10 @@ using UnityEngine;
  * 
  * 
  * Version History:
- *      -> February 25th, 2024
+ *      -> February 25th, 2024 (Lakeland Cleckner)
  *          - Created script for checkpoint collision. 
- *          
+ *       -> March 17th 2024 (Lakeland Cleckner)
+ *          -Modified OnTriggerEnter to include SetRespawnLocation
  * 
  * 
  *Checkpoint Saving Collider Behaviour
