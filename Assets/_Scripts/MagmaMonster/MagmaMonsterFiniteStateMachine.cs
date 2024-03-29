@@ -19,6 +19,8 @@
  *      -> February 24th, 2024: 
  *          -Corrected some comments
  *          -Changed some SerializeFields to not serializable anymore
+ *      -> March 28th, 2024:
+ *          -Refactored the shoot state to use the Object Pooling Pattern using the FireBallPoolManager
  */
 
 using System.Collections.Generic;
@@ -223,7 +225,13 @@ public class MagmaMonsterFiniteStateMachine : MonoBehaviour
         if(_timeBetweenFireballs <= 0)
         {
             // instantiate fireball
-            Instantiate(_fireBall, _shootPoint.transform.position, _fireBall.transform.rotation);
+            //Instantiate(_fireBall, _shootPoint.transform.position, _fireBall.transform.rotation);
+
+
+            //use the FireballPoolManager now instead
+            var fireball = FireBallPoolManager.Instance.GetPrefabFromPool();
+            fireball.transform.SetPositionAndRotation(_shootPoint.transform.position, _fireBall.transform.rotation);
+            fireball.gameObject.SetActive(true);
             //resets the timer
             _timeBetweenFireballs = _initalTimeBetweenFireballs;
         }

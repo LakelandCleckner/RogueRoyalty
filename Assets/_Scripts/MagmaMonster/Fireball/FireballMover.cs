@@ -16,6 +16,8 @@
  *          -Added initial functionality for moving towards the player and fireball destruction
  *      -> February 25th, 2024:
  *          - Made fireball deal damage to Player
+ *      -> March 28th, 2024:
+ *          -Refactored this script to include the Object Pooling Pattern.
  *          
  */
 using UnityEngine;
@@ -44,9 +46,9 @@ public class FireballMover : MonoBehaviour
         //.... then destroy the fireball
         if (other.gameObject.GetComponent<PlayerHealth>() != null)
         {
-            Debug.Log($"fireball found {other.gameObject.name}");
+            //Debug.Log($"fireball found {other.gameObject.name}"); --> Don't need to see this now.
             other.gameObject.GetComponent<PlayerHealth>().LoseHealth();
         }
-        Destroy(this.gameObject);
+        FireBallPoolManager.Instance.ReturnPrefabToPool(this);
     }
 }
