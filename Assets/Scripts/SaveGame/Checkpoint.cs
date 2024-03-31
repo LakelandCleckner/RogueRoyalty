@@ -20,7 +20,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    // Inside your checkpoint collision method
+    // Inside checkpoint collision method
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
