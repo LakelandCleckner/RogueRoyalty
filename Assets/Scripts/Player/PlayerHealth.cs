@@ -20,7 +20,7 @@ using UnityEngine.UI;
  * 
  * 
  * Health for Player
- * V 1.1
+ * V 1.2
  */
 public class PlayerHealth : MonoBehaviour
 {
@@ -32,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] Image heart2;
     [SerializeField] Image heart3;
 
+    [SerializeField] AchievementManager achievements;
     private void Start()
     {
         playerHealth = maxHealth;
@@ -51,6 +52,7 @@ public class PlayerHealth : MonoBehaviour
         else
         {
             SceneManager.LoadScene("GameOver");
+            achievements.GiveAchievement(1);
         }
     }
     public void GainHealth()

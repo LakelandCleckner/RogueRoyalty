@@ -612,3 +612,4 @@ MonoBehaviour:
   maxHealth: 3
   enemyHealth: 3
   _thingToDestroy: {fileID: 7889279917183034429}
+  achievements: {fileID: 0}

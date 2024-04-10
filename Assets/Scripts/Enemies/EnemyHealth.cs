@@ -15,11 +15,13 @@ using UnityEngine;
  *          - Made int enemyHealth public so that it can be accessed from MouseLook.cs. 
  *      -> March 15th, 2024 (by Alexander Maynard):
  *          - Refactored code to make the Raycast decrement health.
- *          
+ *      -> April 10th, 2024
+ *          - Made AchievementManager achievements; and called it so it can be used to 
+ *          send an achievement to the player when they kill their first enemy.
  * 
  * 
  * Health for Enemy
- * V 1.1
+ * V 1.2
  */
 public class EnemyHealth : MonoBehaviour
 {
@@ -27,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] public int enemyHealth;
     [SerializeField] private GameObject _thingToDestroy;
 
+    [SerializeField] AchievementManager achievements;
 
     private void Start()
     {
@@ -39,6 +42,7 @@ public class EnemyHealth : MonoBehaviour
         if(enemyHealth <= 0)
         {
             Destroy(_thingToDestroy);
+            achievements.GiveAchievement(0);
         }
     }
 
