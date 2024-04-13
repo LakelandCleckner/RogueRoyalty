@@ -74,4 +74,13 @@ public class SceneController: MonoBehaviour
         //Loads the first level.
         SceneManager.LoadScene("Level1");
     }
+
+    /// <summary>
+    /// Loads the tutoriaal scene.
+    /// </summary>
+    public void LoadTutorial()
+    {
+        //Loads the first level.
+        SceneManager.LoadScene("Tutorial");
+    }
 }
