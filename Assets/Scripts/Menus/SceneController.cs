@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 /*
@@ -9,7 +7,7 @@ using UnityEngine.SceneManagement;
  * Creation Date: January 30th, 2024
  * 
  * Last Modified by: Alexander Maynard
- * Last Modified Date: February 1st, 2024
+ * Last Modified Date: April 12th, 2024
  * 
  * 
  * Program Description: 
@@ -28,6 +26,9 @@ using UnityEngine.SceneManagement;
  *          
  *      -> February 1st, 2024:
  *          -Updated program header.
+ *          
+ *      -> April 12th, 2024
+ *          -Added a LoadTutorial button that that lets the player enter the tutorial scene.
  */
 
 /// <summary>
