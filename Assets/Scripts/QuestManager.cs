@@ -34,16 +34,78 @@ public class QuestManager : MonoBehaviour
         QuestManager.Instance.CompleteTutorial();
         SceneManager.LoadScene("Level1");
     }
-    public int EnemiesKilled { get; private set; }
+    
+    public Text questText;
+    private List<Quest> quests = new List<Quest>();
 
-    public void EnemyKilled()
+    // Initialize quests
+    void Start()
     {
-        EnemiesKilled++;
-        Debug.Log("Enemy killed!");
-        if (EnemiesKilled >= 1) // Set required kills here
+        // Assuming you have two quests: "Kill Enemy" and "Dodge Troll"
+        quests.Add(new Quest("Kill Enemy", false));
+        quests.Add(new Quest("Dodge Troll", false));
+        questa.Add(new Quest("Reach The Goal", false));
+
+        UpdateQuestUI();
+    }
+
+    // Update quest UI
+    void UpdateQuestUI()
+    {
+        string questInfo = "Quests:\n";
+        foreach (Quest quest in quests)
         {
-            Debug.Log("Kill Quest Completed!");
-            // Handle quest completion
+            questInfo += quest.name + " - " + (quest.completed ? "Complete\n" : "Incomplete\n");
+        }
+        questText.text = questInfo;
+    }
+
+    // Mark quest as complete
+    public void CompleteQuest(string questName)
+    {
+        Quest quest = quests.Find(q => q.name == questName);
+        if (quest != null)
+        {
+            quest.completed = true;
+            UpdateQuestUI();
+            CheckWinCondition();
         }
     }
+
+    // Check win condition
+    void CheckWinCondition()
+    {
+        bool allQuestsCompleted = true;
+        foreach (Quest quest in quests)
+        {
+            if (!quest.completed)
+            {
+                allQuestsCompleted = false;
+                break;
+            }
+        }
+
+        if (allQuestsCompleted)
+        {
+            WinGame();
+        }
+    }
+
+    // Display win screen
+    void WinGame()
+    {
+        GameOver.SetActive(true);
+    }
+
+public class Quest
+{
+    public string name;
+    public bool completed;
+
+    public Quest(string _name, bool _completed)
+    {
+        name = _name;
+        completed = _completed;
+    }
+}
 }

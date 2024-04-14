@@ -10,6 +10,8 @@ TagManager:
   - Projectile
   - LoadButton
   - Enemy
+  - questText
+  - Text
   layers:
   - Default
   - TransparentFX
