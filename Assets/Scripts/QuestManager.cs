@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -34,8 +35,10 @@ public class QuestManager : MonoBehaviour
         QuestManager.Instance.CompleteTutorial();
         SceneManager.LoadScene("Level1");
     }
-    
+
     public Text questText;
+    public GameObject winScreen;
+
     private List<Quest> quests = new List<Quest>();
 
     // Initialize quests
@@ -44,7 +47,7 @@ public class QuestManager : MonoBehaviour
         // Assuming you have two quests: "Kill Enemy" and "Dodge Troll"
         quests.Add(new Quest("Kill Enemy", false));
         quests.Add(new Quest("Dodge Troll", false));
-        questa.Add(new Quest("Reach The Goal", false));
+        quests.Add(new Quest("Reach The Goal", false));
 
         UpdateQuestUI();
     }
@@ -94,8 +97,9 @@ public class QuestManager : MonoBehaviour
     // Display win screen
     void WinGame()
     {
-        GameOver.SetActive(true);
+        winScreen.SetActive(true);
     }
+}
 
 public class Quest
 {
@@ -107,5 +111,4 @@ public class Quest
         name = _name;
         completed = _completed;
     }
-}
 }

@@ -43,7 +43,6 @@ public class EnemyHealth : MonoBehaviour
         {
             Destroy(_thingToDestroy);
             achievements.GiveAchievement(0);
-            QuestManager.Instance.EnemyKilled();
         }
     }
 
