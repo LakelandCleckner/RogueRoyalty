@@ -2,25 +2,28 @@
  * Source File Name: MagmaMonsterFiniteStateMachine.cs
  * Author Name: Alexander Maynard
  * Student Number: 301170707
+ * 
  * Creation Date: February 24th, 2024
  * Last Modified by: Alexander Maynard
- * Last Modified Date: February 24th, 2024
+ * Last Modified Date: April 15th, 
  * 
  * 
  * Program Description: This script handles the behaviours of the Magma Monster enemy type. Such states include: FlyPath (patrol), Chase and Attack
  *      
- * 
- * 
  * Revision History:
- *      -> February 24th, 2024:
+ *      -> February 24th, 2024 (by Alexander Maynard):
  *          -Added all states and functionality
  *          -Added all comments and comment headers
  *
- *      -> February 24th, 2024: 
+ *      -> February 24th, 2024 (by Alexander Maynard): 
  *          -Corrected some comments
  *          -Changed some SerializeFields to not serializable anymore
- *      -> March 28th, 2024:
+ *          
+ *      -> March 28th, 2024 (by Alexander Maynard):
  *          -Refactored the shoot state to use the Object Pooling Pattern using the FireBallPoolManager
+ *          
+ *      -> April 15th, 2024 (by Alexander Maynard):
+ *          -Removed uneeeded commented out code
  */
 
 using System.Collections.Generic;
@@ -224,11 +227,7 @@ public class MagmaMonsterFiniteStateMachine : MonoBehaviour
         //less than or equal to zero to provide adequate time between attacks
         if(_timeBetweenFireballs <= 0)
         {
-            // instantiate fireball
-            //Instantiate(_fireBall, _shootPoint.transform.position, _fireBall.transform.rotation);
-
-
-            //use the FireballPoolManager now instead
+            //use the FireballPoolManager to get a fireball
             var fireball = FireBallPoolManager.Instance.GetPrefabFromPool();
             fireball.transform.SetPositionAndRotation(_shootPoint.transform.position, _fireBall.transform.rotation);
             fireball.gameObject.SetActive(true);

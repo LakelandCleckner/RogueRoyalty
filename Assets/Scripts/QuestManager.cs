@@ -1,55 +1,70 @@
-using System.Collections;
+/* QuestManager.cs
+ * 
+ * Last Modified Date: 2024-04-15
+ * Last Modified by: Alexander Maynard
+ * 
+ * Version History:
+ * 
+ *      -> ....
+ * 
+ *      -> April 15th, 2024 (by Alexander Maynard):
+ *          - Refactored the Quest Sytem to implement the persistent singleton instead of it's own singleton logic, so it could persist across scenes.
+ *          - Added Tutorial Quest
+ *          - Added logic for the Quest sytem UI to disable when in scenes it's not needed.
+ */
+
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
-public class QuestManager : MonoBehaviour
+public class QuestManager : PersistSingleton<QuestManager>
 {
-    public static QuestManager Instance;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-
     public bool IsTutorialCompleted { get; private set; }
+    public TextMeshProUGUI questText;
+    public GameObject winScreen;
+
+    private List<Quest> quests = new List<Quest>();
+
+    [SerializeField] private GameObject _questPanel;
 
     public void CompleteTutorial()
     {
         IsTutorialCompleted = true;
         Debug.Log("Tutorial Completed!");
     }
+    
     public void NewgameBtn()
     {
         QuestManager.Instance.CompleteTutorial();
         SceneManager.LoadScene("Level1");
     }
 
-    public Text questText;
-    public GameObject winScreen;
-
-    private List<Quest> quests = new List<Quest>();
-
     // Initialize quests
     void Start()
     {
+        winScreen = GameObject.FindGameObjectWithTag("WinScreen");
         // Assuming you have two quests: "Kill Enemy" and "Dodge Troll"
         quests.Add(new Quest("Kill Enemy", false));
         quests.Add(new Quest("Dodge Troll", false));
         quests.Add(new Quest("Reach The Goal", false));
+        quests.Add(new Quest("Tutorial", false));
 
         UpdateQuestUI();
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name == SceneManager.GetSceneByName("Tutorial").name ||
+            SceneManager.GetActiveScene().name == SceneManager.GetSceneByName("Level1").name)
+        {
+            _questPanel.SetActive(true);
+        }
+        else
+        {
+            _questPanel.SetActive(false);
+        }
     }
 
     // Update quest UI

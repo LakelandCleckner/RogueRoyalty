@@ -7,8 +7,7 @@
  * Last Modified by: Alexander Maynard
  * Last Modified Date: March 28th, 2024
  * 
- * **NOTE: This script was made by using the GenericPoolManager.cs 
- * Script from the COMP397 in-class lab project as a REFERENCE**
+ * **NOTE: This script was made by using the GenericPoolManager.cs sript from the COMP397 in-class lab project as a REFERENCE**
  * 
  * 
  * Program Description: 

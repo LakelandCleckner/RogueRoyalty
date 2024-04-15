@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - questText
   - Text
+  - WinScreen
   layers:
   - Default
   - TransparentFX

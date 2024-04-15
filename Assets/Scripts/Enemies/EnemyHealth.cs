@@ -4,7 +4,7 @@ using UnityEngine;
  * Nicolas Kaplan (301261925) 
  * 2024-02-25
  * 
- * Last Modified Date: 2024-03-15
+ * Last Modified Date: April 15th, 2024
  * Last Modified by: Alexander Maynard
  * 
  * 
@@ -17,7 +17,9 @@ using UnityEngine;
  *          - Refactored code to make the Raycast decrement health.
  *      -> April 10th, 2024
  *          - Made AchievementManager achievements; and called it so it can be used to 
- *          send an achievement to the player when they kill their first enemy.
+ *          send an achievement to the player when they kill their first enemy.  
+ *      -> April 15th, 2024 (by Alexander Maynard):
+ *          -Added a Quest for killing an enemy here.
  * 
  * 
  * Health for Enemy
@@ -43,6 +45,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Destroy(_thingToDestroy);
             achievements.GiveAchievement(0);
+            QuestManager.Instance.CompleteQuest("Kill Enemy");
         }
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 * Author: Nicolas Kaplan (301261925) 
 * 2024-01-31
 * 
-* Last Modified Date: March 15th, 2024
+* Last Modified Date: April 15th, 2024
 * Last Modified by: Alexander Maynard
 * 
 * Revision History:
@@ -22,6 +22,9 @@ using UnityEngine.UI;
 *          - Added comments for any work done on player shooting.
 *          - Added functionality for muzzle flash to be triggered when shooting.
 *          - Disabled cursor lock state
+*     -> April 15th, 2024 (by Alexander Maynard):
+*          - Removed the old raycasting code.
+*          - Removed debug message for shooting.
 * 
 * 
 * Mouse Lookaround script for player movement.
@@ -48,11 +51,6 @@ public class MouseLook : MonoBehaviour
     [SerializeField] float xClamp = 85f; // to prevent the player from looking more than directly up or down
     float xRotation = 0f;
 
-    //[Header("Shooting")]
-    //Ray ray;
-    //RaycastHit hit;
-    //[SerializeField] LayerMask layerMask;
-
     /// <summary>
     /// set cursor lock state to Locked on Awake for playability.
     /// </summary>
@@ -60,7 +58,6 @@ public class MouseLook : MonoBehaviour
     {
         //so no particles are spawned when the game first starts.
         _muzzleFlashParticles.Pause();
-        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -86,37 +83,6 @@ public class MouseLook : MonoBehaviour
     /// </summary>
     public void OnFirePressed()
     {
-
-        //ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //if (Physics.Raycast(ray, out hit, 100f, layerMask))
-        //{
-        //    Debug.DrawLine(ray.origin, hit.point, Color.red);
-        //    if (hit.transform.gameObject.GetComponent<EnemyHealth>() != null)
-        //    {
-        //        hit.transform.gameObject.GetComponent<EnemyHealth>().enemyHealth -= 1;
-        //        Debug.Log($"Hit enemy {hit.transform.gameObject.name}. Health reduced by 1.");
-        //    }
-        //    else if (hit.transform.gameObject.GetComponentInChildren<EnemyHealth>() != null)
-        //    {
-        //        hit.transform.gameObject.GetComponentInChildren<EnemyHealth>().enemyHealth -= 1;
-        //        Debug.Log($"Hit enemy {hit.transform.gameObject.name}. Health reduced by 1.");
-        //    }
-        //    else if (hit.transform.gameObject.GetComponentInParent<EnemyHealth>() != null)
-        //    {
-        //        hit.transform.gameObject.GetComponentInParent<EnemyHealth>() .enemyHealth -= 1;
-        //        Debug.Log($"Hit enemy {hit.transform.gameObject.name}. Health reduced by 1.");
-        //    }
-        //    else
-        //    {
-        //        Debug.Log($"Whatever this ray hit does not contain health. {hit.transform.gameObject.name}");
-        //    }
-        //}
-        //else
-        //{
-        //    Debug.DrawLine(ray.origin, hit.point, Color.green);
-        //}
-
-
         //replays the muzzle flash everytime the player shoots
         _muzzleFlashParticles.Play();
 
@@ -132,9 +98,6 @@ public class MouseLook : MonoBehaviour
                 //...then call the LoseHealth method on that shootPoint
                 shootPoint.transform.gameObject.GetComponent<EnemyHealth>().LoseHealth();
                 Instantiate(_bloodParticles, shootPoint.point, Quaternion.identity);
-
-                //sends message to the console
-                Debug.Log($"Enemy health: {shootPoint.transform.gameObject.GetComponent<EnemyHealth>().enemyHealth}");
             }
         }
     }

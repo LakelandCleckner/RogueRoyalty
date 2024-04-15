@@ -5,7 +5,7 @@
  * Creation Date: January 31st, 2024
  * 
  * Last Modified by: Alexander Maynard
- * Last Modified Date: January 31st, 2024
+ * Last Modified Date: April 15th, 2024
  * 
  * 
  * Program Description: 
@@ -29,6 +29,9 @@
  *     -> March 15th, 2024 (by Alexander Maynard):
  *          -made the CanPauseGame method public so the mobile pause button can access it.
  *          -Started refactoring for the CanPauseMenu method to include the touch controls.
+ *     -> April 15th, 2024 (by Alexander Maynard):
+ *          -Removedd ESC key as an input.
+ *          -Created check so that Time.timeScale is restored.
  */
 
 using UnityEngine;
@@ -67,21 +70,6 @@ public class PauseMenuController : MonoBehaviour
     {
         //make sure the pause menu is off at the start
         _pauseMenu.SetActive(false);
-    }
-
-    /// <summary>
-    /// Update searches for user input on the ESC key. 
-    /// ESC key will then activate the In-Game Pause Menu
-    /// and disable the player input and set the cursor lock mode to none.
-    /// </summary>
-    void Update()
-    {
-        //search for user input on the ESC key
-        if(Input.GetKey(KeyCode.Escape))
-        {
-            //calls CanPauseGame
-            CanPauseGame(true);
-        }
     }
 
     /// <summary>
@@ -134,6 +122,7 @@ public class PauseMenuController : MonoBehaviour
     /// </summary>
     public void MainMenu()
     {
+        Time.timeScale = 1.0f;
         //Load the main menu scene (buildIndex 0)
         SceneManager.LoadScene(0);
     }

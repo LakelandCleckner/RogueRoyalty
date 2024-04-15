@@ -11,10 +11,13 @@ using UnityEngine.UI;
 * added functionality to manage inputs with shooting mechanic in mouselook.
 * 
 *  Version History:
-*      -> March 15th, 2024 (by Alexander Maynard):
+*       -> March 15th, 2024 (by Alexander Maynard):
 *          - added a delay between shots for the player shooting.
 *          - added functionality for mobile touch button for shooting with the UI button.
 *          - added initial aiming joystick controls.
+*      
+*       -> April 15th, 2024 (by Alexander Maynard):
+*           - Removed mouse input for PC as mobile is being used going forward (only wasd and space for PC testing purposes will be kept).
 * 
 * V 1.1
 */
@@ -46,16 +49,6 @@ public class InputManager : MonoBehaviour
         groundMovement = controls.GroundMovement;
         groundMovement.HorizontalMovement.performed += ctx => horizontalInput = ctx.ReadValue<Vector2>();
         groundMovement.Jump.performed += _ => movement.OnJumpPressed();
-        groundMovement.MouseX.performed += ctx => mouseInput.x = ctx.ReadValue<float>();
-        groundMovement.MouseY.performed += ctx => mouseInput.y = ctx.ReadValue<float>();
-        groundMovement.Fire.performed += _ =>
-        {
-            if(_timeBetweenShots < 0)
-            {
-                mouseLook.OnFirePressed();
-                _timeBetweenShots = _totalTimeBetweenShots;
-            }
-        };
 
         //mobile touch button for shooting
         _shootBtn.onClick.AddListener(() =>
@@ -87,6 +80,7 @@ public class InputManager : MonoBehaviour
         //decrement the shot time.
         _timeBetweenShots -= 1 * Time.deltaTime;
     }
+
     private void OnEnable()
     {
         controls.Enable();
@@ -95,6 +89,4 @@ public class InputManager : MonoBehaviour
     {
         controls.Disable();
     }
-
-
 }

@@ -67,8 +67,7 @@ public class SceneController: MonoBehaviour
     }
 
     /// <summary>
-    /// Reloads the current scene. NOTE: this is only level 1 for now
-    /// as there will only be one level for our game.
+    /// Reloads the level 1 scene to play again.
     /// </summary>
     public void PlayAgain()
     {
@@ -77,7 +76,7 @@ public class SceneController: MonoBehaviour
     }
 
     /// <summary>
-    /// Loads the tutoriaal scene.
+    /// Loads the tutorial scene.
     /// </summary>
     public void LoadTutorial()
     {
