@@ -33,7 +33,7 @@ using UnityEngine.UI;
 public class MouseLook : MonoBehaviour
 {
     [Header("Cursor Options")]
-    [SerializeField] float sensitivityX = 8f; 
+    [SerializeField] float sensitivityX = 16f; 
     [SerializeField] float sensitivityY = 0.5f;
     float mouseX, mouseY;
     

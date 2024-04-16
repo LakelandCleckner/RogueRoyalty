@@ -6,15 +6,18 @@ using TMPro;
  * Nicolas Kaplan (301261925) 
  * 2024-04-10
  * 
- * Last Modified Date: 2024-04-10
+ * Last Modified Date: 2024-04-16
  * Last Modified by: Nicolas Kaplan
  * 
  * 
  * Version History:
  *      -> April 10th, 2024
  *          - Created script using a class based approach
+ *      -> April 16th, 2024
+ *          - Achievements will no longer repeat in the same session 
+ *          
  * This script is an achievement manager, it can be called from specific scripts to give the player an achievement.
- * V 1.0
+ * V 1.1
  */
 public class AchievementManager : MonoBehaviour
 {
@@ -64,7 +67,12 @@ public class AchievementManager : MonoBehaviour
         Achievement chosenAchievement = achievementList[achievementID];
         if (chosenAchievement != null)
         {
-            StartCoroutine(AchievementDisplay(chosenAchievement));
+            if (!chosenAchievement.obtainedBefore)
+            {
+                chosenAchievement.obtainedBefore = true;
+                StartCoroutine(AchievementDisplay(chosenAchievement));
+
+            }
         }
     }
 }

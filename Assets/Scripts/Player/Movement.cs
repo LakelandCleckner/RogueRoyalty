@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -60,15 +61,25 @@ public class Movement : MonoBehaviour
     {
         originalGravity = gravity;
         //Debug.Log($"Initial Original Gravity: {originalGravity}");
+        EventTrigger trigger = jumpButton.gameObject.AddComponent<EventTrigger>();
+        EventTrigger.Entry jumpEntry = new EventTrigger.Entry();
+        jumpEntry.eventID = EventTriggerType.PointerDown;
+        jumpEntry.callback.AddListener((eventData) => { OnJumpPressed(); });
+        trigger.triggers.Add(jumpEntry);
+
     }
     private void Update()
     {
-        controller.Move(new Vector3 (movementJoystick.Direction.x * speed * Time.deltaTime, 0, movementJoystick.Direction.y * speed * Time.deltaTime));
+        Vector3 direction = new Vector3(movementJoystick.Direction.x, 0, movementJoystick.Direction.y);
+        float cameraRotation = Camera.main.transform.rotation.eulerAngles.y;
+        Quaternion rotation = Quaternion.Euler(0, cameraRotation, 0);
+        Vector3 rotatedDirection = rotation * direction;
+        controller.Move(rotatedDirection * speed * Time.deltaTime);
         float halfHeight = controller.height * 0.5f;
         Vector3 bottomPoint = transform.TransformPoint(controller.center - Vector3.up * halfHeight);
         isGrounded = Physics.CheckSphere(bottomPoint, 0.1f, groundMask);
 
-        jumpButton.onClick.AddListener(OnJumpPressed);
+        //jumpButton.onClick.AddListener(OnJumpPressed);
         if (isGrounded)
         {
             //Debug.Log("resetting velocity");
