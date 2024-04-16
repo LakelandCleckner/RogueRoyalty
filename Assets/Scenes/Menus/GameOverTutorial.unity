@@ -1485,6 +1485,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AchievementCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8942131721093584835, guid: 8f076f340cdff68439a9ea359aa32ce5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
