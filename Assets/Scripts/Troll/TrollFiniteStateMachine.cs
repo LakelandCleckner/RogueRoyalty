@@ -1,5 +1,5 @@
 /*
- * Source File Name: SkeletonFiniteStateMachine.cs
+ * Source File Name: TrollFiniteStateMachine.cs
  * Author Name: Alexander Maynard
  * Student Number: 301170707
  * Creation Date: February 26th, 2024
