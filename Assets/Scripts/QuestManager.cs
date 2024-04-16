@@ -11,6 +11,7 @@
  *          - Refactored the Quest Sytem to implement the persistent singleton instead of it's own singleton logic, so it could persist across scenes.
  *          - Added Tutorial Quest
  *          - Added logic for the Quest sytem UI to disable when in scenes it's not needed.
+ *          - Removed win condition (commented out since we may include it again if there is enough time.
  */
 
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ public class QuestManager : PersistSingleton<QuestManager>
 {
     public bool IsTutorialCompleted { get; private set; }
     public TextMeshProUGUI questText;
-    public GameObject winScreen;
+    //public GameObject winScreen;
 
     private List<Quest> quests = new List<Quest>();
 
@@ -44,7 +45,7 @@ public class QuestManager : PersistSingleton<QuestManager>
     // Initialize quests
     void Start()
     {
-        winScreen = GameObject.FindGameObjectWithTag("WinScreen");
+        //winScreen = GameObject.FindGameObjectWithTag("WinScreen");
         // Assuming you have two quests: "Kill Enemy" and "Dodge Troll"
         quests.Add(new Quest("Kill Enemy", false));
         quests.Add(new Quest("Dodge Troll", false));
@@ -86,34 +87,34 @@ public class QuestManager : PersistSingleton<QuestManager>
         {
             quest.completed = true;
             UpdateQuestUI();
-            CheckWinCondition();
+            //CheckWinCondition();
         }
     }
 
-    // Check win condition
-    void CheckWinCondition()
-    {
-        bool allQuestsCompleted = true;
-        foreach (Quest quest in quests)
-        {
-            if (!quest.completed)
-            {
-                allQuestsCompleted = false;
-                break;
-            }
-        }
+//    // Check win condition
+//    void CheckWinCondition()
+//    {
+//        bool allQuestsCompleted = true;
+//        foreach (Quest quest in quests)
+//        {
+//            if (!quest.completed)
+//            {
+//                allQuestsCompleted = false;
+//                break;
+//            }
+//        }
 
-        if (allQuestsCompleted)
-        {
-            WinGame();
-        }
-    }
+//        if (allQuestsCompleted)
+//        {
+//            WinGame();
+//        }
+//    }
 
-    // Display win screen
-    void WinGame()
-    {
-        winScreen.SetActive(true);
-    }
+//    // Display win screen
+//    void WinGame()
+//    {
+//        winScreen.SetActive(true);
+//    }
 }
 
 public class Quest

@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menus/GameOverTutorial.unity
     guid: 7e1cda4b9faaa2b4ea0df1a920a17c34
+  - enabled: 1
+    path: Assets/Scenes/Menus/WinScreen.unity
+    guid: 070dee0c0edd3dc4287b7282f5975223
   m_configObjects: {}

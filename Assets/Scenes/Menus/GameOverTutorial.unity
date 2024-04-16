@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 738187789}
   - component: {fileID: 738187788}
   m_Layer: 5
-  m_Name: ScoreArea
+  m_Name: MessageArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
