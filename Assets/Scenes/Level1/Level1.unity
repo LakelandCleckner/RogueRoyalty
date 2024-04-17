@@ -1525,11 +1525,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 20f2ea214cfe0d748b1b4b8ad965af69, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20f2ea214cfe0d748b1b4b8ad965af69, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20f2ea214cfe0d748b1b4b8ad965af69, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2675,72 +2675,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 8211cbe42dc7376499f8a6746bc97fb9, type: 3}
   m_PrefabInstance: {fileID: 130319667}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &133963939
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 769129481}
-    m_Modifications:
-    - target: {fileID: 100000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-      propertyPath: m_Name
-      value: Stool_round
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 72.39882
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 108.7608
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 69.511856
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
---- !u!4 &133963940 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 2fecc0ac19ff3de449e712fce3335198, type: 3}
-  m_PrefabInstance: {fileID: 133963939}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &137198802
 PrefabInstance:
@@ -16805,7 +16739,6 @@ Transform:
   - {fileID: 483031436}
   - {fileID: 1741065119}
   - {fileID: 999293328}
-  - {fileID: 133963940}
   m_Father: {fileID: 627278868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &772596708 stripped
@@ -30501,6 +30434,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1874783578105188838, guid: 7d3e141964126d44c903171ff06c3384, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3597021613492834436, guid: 7d3e141964126d44c903171ff06c3384, type: 3}
       propertyPath: m_Name
       value: Player
@@ -30517,6 +30454,10 @@ PrefabInstance:
       propertyPath: movementJoystick
       value: 
       objectReference: {fileID: 1387396197}
+    - target: {fileID: 4798894519363226615, guid: 7d3e141964126d44c903171ff06c3384, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4959655175728807643, guid: 7d3e141964126d44c903171ff06c3384, type: 3}
       propertyPath: m_AllowDynamicResolution
       value: 0

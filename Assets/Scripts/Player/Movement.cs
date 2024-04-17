@@ -9,8 +9,8 @@ using UnityEngine.UI;
  * Nicolas Kaplan (301261925) 
  * 2024-01-31
  * 
- * Last Modified Date: 2024-03-16
- * Last Modified by: Nicolas Kaplan
+ * Last Modified Date: 2024-04-16
+ * Last Modified by: Alexander Maynard
  * 
  * 
  * Version History:
@@ -26,6 +26,8 @@ using UnityEngine.UI;
  *          - Created mobile functionality for movement and jumping.
  *      -> March 17th, 2024 (Lakeland Cleckner)
  *          - Added SetRespawnLocation for checkpoint functionality
+ *     -> April 16th, 2024 (by Alexander Maynard)
+ *          - Fixed the jump button for mobile by making the OnJumpButtonPressed automatically call the hovering mechanic (vie coroutine) to be better suited for mobile.
  * Movement for Player
  * V 1.3
  */
@@ -50,6 +52,7 @@ public class Movement : MonoBehaviour
     [Header("Hovering")]
     [SerializeField] float hoverDivider = 4f; // how much are we dividing the player's gravity by when they hover?
     public bool hover;
+    [SerializeField] private float _jumpToFloatDelay = 0.3f;
 
     [Header("Gravity & Velocity")]
     [SerializeField] float gravity = -30f;
@@ -64,7 +67,7 @@ public class Movement : MonoBehaviour
         EventTrigger trigger = jumpButton.gameObject.AddComponent<EventTrigger>();
         EventTrigger.Entry jumpEntry = new EventTrigger.Entry();
         jumpEntry.eventID = EventTriggerType.PointerDown;
-        jumpEntry.callback.AddListener((eventData) => { OnJumpPressed(); });
+        jumpEntry.callback.AddListener((eventData) => {OnJumpPressed();});
         trigger.triggers.Add(jumpEntry);
 
     }
@@ -120,11 +123,15 @@ public class Movement : MonoBehaviour
     public void OnJumpPressed()
     {
         jump = true;
+        StartCoroutine(Hovering());
     }
-    public void Hovering()
+    
+    public IEnumerator Hovering()
     {
+        yield return new WaitForSeconds(_jumpToFloatDelay);
         hover = true;
     }
+
     public void NotHovering()
     {
         gravity = originalGravity;

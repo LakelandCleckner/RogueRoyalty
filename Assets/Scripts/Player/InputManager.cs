@@ -5,7 +5,7 @@ using UnityEngine.UI;
 * 2024-01-31
 * 
 * Last Modified by: Alexander Maynard
-* Last Modified Date: 2024-03-15
+* Last Modified Date: 2024-04-16
 *
 * InputManager in charge of player movement, jumping.
 * added functionality to manage inputs with shooting mechanic in mouselook.
@@ -17,8 +17,12 @@ using UnityEngine.UI;
 *          - added initial aiming joystick controls.
 *      
 *       -> April 15th, 2024 (by Alexander Maynard):
+*           - Removed mouse input for PC as mobile is being used going forward (only wasd and space for PC testing purposes will be kept)
+*           
+*       -> April 16th, 2024 (by Alexander Maynard):
 *           - Removed mouse input for PC as mobile is being used going forward (only wasd and space for PC testing purposes will be kept).
-* 
+*           -Refactored this script to no longer have to check of when to hover and not hover. This is now just a check for NotHovering when the player is grounded. 
+*               This was due to use needing better support for the float mechanic on mobile (Android).
 * V 1.1
 */
 
@@ -67,12 +71,8 @@ public class InputManager : MonoBehaviour
 
         movement.RecieveInput(horizontalInput);
         mouseLook.RecieveInput(mouseInput);
-        // Hovering Check (player needs to press and hold the jump key, be in mid-air, and be going downwards)
-        if (groundMovement.Jump.IsPressed() && movement.verticalVelocity.y < 0 && !movement.isGrounded)
-        {
-            movement.Hovering();
-        }
-        else
+
+        if(movement.isGrounded)
         {
             movement.NotHovering();
         }
